@@ -14,6 +14,7 @@ function App() {
       <Menu/>
     </div>
     );
+    
 }
 
 export default App;
