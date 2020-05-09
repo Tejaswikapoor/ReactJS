@@ -2,8 +2,12 @@ import React from 'react';
 import logo from './logo.svg';
 import { Navbar ,NavbarBrand} from 'reactstrap';
 import Menu from './components/MenuComponent';
+import {DISHES } from './shared/dishes'
 
 function App() {
+  
+  
+  
   return (
     <div >
       <Navbar dark color="primary">
@@ -11,10 +15,9 @@ function App() {
         <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
         </div>
       </Navbar>
-      <Menu/>
+      <Menu dishes={DISHES}/>
     </div>
-    );
-    
+    ); 
 }
 
 export default App;
