@@ -1,18 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 //import {Media} from 'reactstrap';
 import {Card,CardImg, CardImgOverlay,CardText,CardBody,CardTitle} from 'reactstrap';
 
 
-class DishDetail extends Component{
 
-    constructor(props){
-        super(props);
-       
-        this.state={
-          //  selectedDish:this.props.selectedDish
-        }
-    }
-  renderDish(dish){
+
+  function RenderDish({dish}){
     if (dish != null)
     return(
         <Card >
@@ -23,23 +16,24 @@ class DishDetail extends Component{
             </CardBody>
         </Card>
     );
-else
+    else
     return(
         <div></div>
-    );
+    )
+    
 }
-
-render(){
-    return(
+      const DishDetail=(props)=>{
+return(
         <div className="container ">
         <div className="row col-md-3 m-1 ">
-       
-       {this.renderDish(this.props.dish)}
+       <RenderDish dish={props.dish}/>
       </div>
+ 
    </div>
-    );
+)
+      }
     
-    }
 
-}
+
+
 export default DishDetail;
