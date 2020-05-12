@@ -36,8 +36,6 @@ return(
                     <hr/>
                 </div>
               
-
-              
             </div>
 
         <div className="row col-md-3 m-1 ">

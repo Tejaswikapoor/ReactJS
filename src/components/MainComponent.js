@@ -37,14 +37,16 @@ class Main extends Component{
           />
         )
       }
-
     const DishWithID= ({match})=>{
         return (
          <DishDetail dish={ this.state.dishes.filter((dish)=> dish.id===parseInt(match.params.id,10))[0]}/>
         )
-    }
+    
+   }
+
   return (
-  
+
+    
       <div>
        <Header/>
        <Switch>
