@@ -8,7 +8,25 @@ export const DISHES =
         label:'Hot',
         price:'4.99',
         featured: true,
-        description:'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.'                    
+        description:'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.' ,
+        ingredients:["1 cups Rice rava",
+        "1/4 cup Urad dal",
+        "Salt to taste",
+        "2 tbsp oil "],
+        instructions:["Soak rava and dal in water for about 1 hour.",
+           " Drain dal and grind to a fine paste using little water. Add this paste to to rice rava and mix well.",
+            "Cover and keep the batter to ferment for 6-8 hours or overnight in a warm place.",
+            "Add salt and bring the batter to pouring consistency, if very thick.",
+            "Heat a non stick tawa and drizzle some oil over it. Wipe off the oil and pour a ladleful of batter over it.",
+            "Spread the batter to form a thick circle and lower the heat.",
+            "When the top becomes a bit dry, spread pizza sauce over it.",
+            "Place corns, tomato, capsicum and olives over it.",
+            "Sprinkle 2 tbsp of grated mozzarella cheese all over it and top with some more corns and olives.",
+            "Top it up with more olives and corns.",
+            "Sprinkle pizza seasoning and chilli flakes.",
+            "Cover it and let it cook on low heat till the cheese melts.",
+           " Uttapam pizza is ready to be devoured. Enjoy it."]
+        
         },
         {
         id: 1,

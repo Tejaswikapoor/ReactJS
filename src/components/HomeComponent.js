@@ -15,10 +15,18 @@ return(
 );
 }
 
-
 function Home(props){
 return(
+    
     <div className="container">
+    <div className="row">
+    <div className="col-12">
+                    <h3>
+                       Featured 
+                    </h3>
+                    <hr/>
+                </div>
+        </div>   
         <div className="row align-items-start">
             <div className="col-12 col-md m-1">
                 <RenderCard items={props.dish}/>
