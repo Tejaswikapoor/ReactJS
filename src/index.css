@@ -11,14 +11,15 @@
 }
 
 .footer{
-  background-color: rgb(85, 153, 255);
+  background-color: rgba(172, 199, 218, 0.938);
   margin:0px auto;
   padding: 20px 0px 20px 0px;
 }
 .jumbotron {
   padding:70px 30px 70px 30px;
   margin:0px auto;
-  background: rgb(85, 153, 255) ;
+  background: rgba(172, 199, 218, 0.938);
+  /* rgb(88, 127, 255) ; */
   color:floralwhite;
 }
 
@@ -29,5 +30,38 @@ address{
 }
 
 .navbar-dark {
-  background-color: rgb(57, 112, 230);
+  background-color:rgb(71, 70, 70);
+   /* rgba(37, 80, 223, 0.938); */
+}
+.alignCrousel{
+  height: 30vh;
+}
+.card{
+  justify-content: center;
+  min-height: 200px;
+}
+hr.rounded {
+  border-top: 8px solid #bbb;
+  border-radius: 5px;
+}
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  background-color: whitesmoke
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+
+.alignfoodCard{
+  height: 50vh;
+
+}
+.homeCard{
+  height: 70vh;
 }

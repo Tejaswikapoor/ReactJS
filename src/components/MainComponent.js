@@ -13,7 +13,7 @@ import {LEADERS } from '../shared/leaders';
 import {PROMOTIONS } from '../shared/promotions';
 import {DISHES } from '../shared/dishes';
 import ShowDish  from './ShowDishComponent';
-
+import AboutUs from './AboutUsComponent';
 class Main extends Component{
     constructor(props){
         super(props);
@@ -63,8 +63,11 @@ class Main extends Component{
          <Route exact path='/menu' component={()=> <Menu dishes={this.state.dishes}/>}/>
          <Route path='/menu/:id' component={DishWithID}/>
          <Route exact path='/contactus' component={Contact}/>
-         <Route Redirect='/home'/>
+        
          <Route path='/dishdetail' component={()=><ShowDish dishes={this.state.dishes}/>} />
+       <Route exact path='/aboutus' component={AboutUs}/>
+
+       <Route Redirect='/home'/>
        </Switch>
       {/* <Menu  dishes={DISHES}  onClick={(dishId)=>{this.onDishSelect(dishId)} }/>
       <DishDetail dish={this.state.dishes.filter((dish)=>dish.id===this.state.selectedDish)[0]}/> */}

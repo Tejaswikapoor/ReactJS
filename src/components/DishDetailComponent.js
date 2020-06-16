@@ -82,17 +82,17 @@ return(
                 </div>
               
             </div>
-<div className="row">
-             <div className=" col-md-3 m-1 ">
-             <Card >
-            <CardImg width="100%" top src={this.props.dish.image}  />
-            <CardBody>
-              <CardTitle>{this.props.dish.name}</CardTitle>
-              <CardText>{this.props.dish.description}</CardText>
-            </CardBody>
-            <Button className="btn btn-block bg-info" onClick={this.toggleShowRecipe}>Show Reciepe </Button>
-            <Button className="btn btn-block bg-info" onClick={this.toggleShowComment}>Show comment</Button>
-        </Card>
+            <div className="row">
+                <div className=" col-md-3 m-1 ">
+                  <Card >
+                          <CardImg width="100%" top src={this.props.dish.image}  />
+                      <CardBody>
+                        <CardTitle>{this.props.dish.name}</CardTitle>
+                      <CardText>{this.props.dish.description}</CardText>
+                     </CardBody>
+                         <Button className="btn btn-block bg-info" onClick={this.toggleShowRecipe}>Show Reciepe </Button>
+                         <Button className="btn btn-block bg-info" onClick={this.toggleShowComment}>Show comment</Button>
+                  </Card>
             </div>
        {this.state.showComment &&
             <div className="col-md-8 mb-2">

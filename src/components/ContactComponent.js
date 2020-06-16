@@ -81,7 +81,7 @@ class Contact extends Component {
         const errorss=this.validatess(this.state.firstname,this.state.lastname,this.state.email,this.state.telnum);
     return(
         <div className="container">
-            <div className="row">
+            <div className="row mt-2">
                 <Breadcrumb>
                     <BreadcrumbItem> <Link to='/home'>Home</Link></BreadcrumbItem>
                     <BreadcrumbItem> Contact US</BreadcrumbItem>
