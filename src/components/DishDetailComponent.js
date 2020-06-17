@@ -1,23 +1,7 @@
 import React, { Component } from 'react';
 //import {Media} from 'reactstrap';
-import {Card,CardImg, CardImgOverlay,CardText,CardBody,CardTitle,BreadcrumbItem,Breadcrumb, CardHeader,Button} from 'reactstrap';
+import {Card,CardImg, CardImgOverlay,CardText,CardBody,CardTitle,BreadcrumbItem,Breadcrumb, CardHeader,Button,Modal,ModalBody,ModalHeader,Form,FormFeedback,Label,Col,Input,FormGroup} from 'reactstrap';
 import {Link } from 'react-router-dom';
-
-//   function RenderDish({dish}){
-//     if (dish != null)
-//     return(
-        
-//     );
-//     else
-//     return(
-//         <div></div>
-//     )
-    
-// }
-
- 
-   
-    
 
       class DishDetail extends Component{
           constructor(props){
@@ -26,9 +10,14 @@ import {Link } from 'react-router-dom';
                     showComment:false,
                     showReceipe:true,
                   }
+                  this.toggleModal=this.toggleModal.bind(this);
               this.toggleShowRecipe=this.toggleShowRecipe.bind(this);
               this.toggleShowComment=this.toggleShowComment.bind(this);
           }
+          toggleModal() {
+            this.setState({
+                isModalOpen:!this.state.isModalOpen,
+            })}
           toggleShowRecipe(){
               this.setState({
                   showReceipe:true,
@@ -63,6 +52,7 @@ import {Link } from 'react-router-dom';
                  </div>
 
               </CardBody>
+              
        </Card>
             )
     })
@@ -97,6 +87,7 @@ return(
        {this.state.showComment &&
             <div className="col-md-8 mb-2">
                     {comm}
+                    <Button className="btn btn-block bg-info" onClick={this.toggleModal}>Add Comment </Button>
               </div>
           }
           {this.state.showReceipe &&
@@ -124,7 +115,54 @@ return(
          </div>
          }
          </div>
+         <Modal isOpen={this.state.isModalOpen} toggle={this.state.toggleModal}>
+                    <ModalHeader toggle={this.state.toggleModal}>
+                        <h5>Please add comment</h5>
+                    </ModalHeader>
+                    <ModalBody>
+                    <Form  >
+                            <FormGroup row>
+                                <Label htmlFor="firstname" md={2}>Name</Label>
+                                <Col md={10}>
+                                    <Input type="text" id="firstname" name="firstname"
+                                        placeholder=" Name"
+                                        // value={this.state.firstname}
+                                        // onChange={this.handleInputChange}
+                                        // onBlur={this.handleblur('firstname')} 
+                                        // valid={errorss.firstname ===''}
+                                        // invalid={errorss.firstname!==''}
+                                        
+                                         />
+                                    {/* <FormFeedback>{errorss.firstname}</FormFeedback> */}
+                                </Col>
+                            </FormGroup>
+               
+                            <FormGroup row>
+                                <Label htmlFor="message" md={2}>Give your Feedback </Label>
+                                <Col md={10}>
+                                    <Input type="textarea" id="message" name="message"
+                                        rows="12"
+                                     //   value={this.state.message}
+                                       // onChange={this.handleInputChange}
+                                        />
+                                    
+                                </Col>
+                            </FormGroup> 
+                            <FormGroup row>
+                                <Col md={{size:4,offset:2}}>
+                                    <Button className="btn btn-block" type="submit" color="primary">Send</Button>
+                                </Col>
+                                <Col md={{size:4,offset:2}}>
+                                    <Button className="btn btn-block" type="submit" color="primary" onClick={this.toggleModal}>Close</Button>
+                                </Col>
+                            </FormGroup>
+
+                        </Form>
+                        
+                    </ModalBody>
+                </Modal>
    </div>
+
 )
       }
     

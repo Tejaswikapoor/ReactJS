@@ -67,7 +67,7 @@ class Main extends Component{
          <Route path='/dishdetail' component={()=><ShowDish dishes={this.state.dishes}/>} />
        <Route exact path='/aboutus' component={AboutUs}/>
 
-       <Route Redirect='/home'/>
+       <Route Redirect='/home' component={HomePage}/>
        </Switch>
       {/* <Menu  dishes={DISHES}  onClick={(dishId)=>{this.onDishSelect(dishId)} }/>
       <DishDetail dish={this.state.dishes.filter((dish)=>dish.id===this.state.selectedDish)[0]}/> */}

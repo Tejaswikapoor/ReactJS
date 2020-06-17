@@ -2,10 +2,11 @@ import React from 'react';
 import {Card, CardBody ,CardText ,CardTitle ,CardImg, CardSubtitle, CardDeck} from 'reactstrap';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import {Link} from 'react-router-dom';
 function RenderCard({items}){
 return(
     
-    <Card className="homeCard">
+    <Card className="homeCard text-dark" >
         <CardImg src={items.image} alt={items.name}/>
         <CardBody>
             <CardTitle>
@@ -28,20 +29,18 @@ return(
                         <Carousel  showThumbs={false} infiniteLoop={true} autoPlay={true} interval={2000} showStatus={false} showArrows={false} stopOnHover={false} height={"30%"} >
 
                             <div>
-                                <img className="homeCard" src={process.env.PUBLIC_URL + '/assets/images/3.jpg'} height="30%" width="100%"/>
+                                <img className="homeCard" src={process.env.PUBLIC_URL + '/assets/images/3.jpg'} height="100%" width="100%"/>
                             </div>
                             <div>
-                                <img className="homeCard" src={process.env.PUBLIC_URL + '/assets/images/2.jpg'} height="30%" width="100%"/>
+                                <img className="homeCard" src={process.env.PUBLIC_URL + '/assets/images/2.jpg'} height="100%" width="100%"/>
                             </div>
                             <div>
-                                <img className="homeCard" src={process.env.PUBLIC_URL + '/assets/images/4.jpg'} height="30%" width="100%"/>
+                                <img className="homeCard" src={process.env.PUBLIC_URL + '/assets/images/4.jpg'} height="100%" width="100%"/>
                             </div>
                             <div>
-                                <img className="homeCard" src={process.env.PUBLIC_URL + '/assets/images/1.jpg'} height="30%" width="100%"/>
+                                <img className="homeCard" src={process.env.PUBLIC_URL + '/assets/images/1.jpg'} height="100%" width="100%"/>
                             </div>
-                            <div>
-                                <img className="homeCard" src={process.env.PUBLIC_URL + '/assets/images/1.jpg'} height="30%" width="100%"/>
-                            </div>
+                            
                         </Carousel>
                     </div>
                     <div className="row mt-4">
@@ -52,6 +51,23 @@ return(
                           <hr className="rounded"/>
                         </div>
                     </div>   
+        <div className="row align-items-start mb-4">
+            <CardDeck>
+               
+            <div className="col-12 col-md m-1 ">
+            <Link to="/menu/0" >
+                <RenderCard  items={props.dish}/>
+                </Link>
+            </div>
+           
+            <div className="col-12 col-md m-1">
+                <RenderCard items={props.promo}/>
+            </div>
+            <div className="col-12 col-md m-1">
+                <RenderCard items={props.leaders}/>
+            </div>
+            </CardDeck>
+        </div>
         <div className="row align-items-start mb-4">
             <CardDeck>
             <div className="col-12 col-md m-1 ">
