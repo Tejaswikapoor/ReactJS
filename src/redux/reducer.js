@@ -1,4 +1,17 @@
-import {COMMENTS} from '../shared/comments';
-import {LEADERS } from '../shared/leaders';
-import {PROMOTIONS } from '../shared/promotions';
-import {DISHES } from '../shared/dishes';
+
+import * as ActionType from './ActionType';
+
+export const initialState={
+dishes:[]
+}
+
+export const Dishes = (state = initialState, action) => {
+    switch (action.type) {
+        case ActionType.Fetch_Dishes:
+            return {...state,dishes:action.payload}
+
+        default:
+          return state;
+      }
+};
+export default Dishes;

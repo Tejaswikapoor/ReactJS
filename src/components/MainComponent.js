@@ -14,6 +14,20 @@ import {PROMOTIONS } from '../shared/promotions';
 import {DISHES } from '../shared/dishes';
 import ShowDish  from './ShowDishComponent';
 import AboutUs from './AboutUsComponent';
+
+import {  withRouter } from 'react-router-dom'
+import { connect } from 'react-redux';
+import {FetchAllDishes} from '../redux/ActionCreator'
+
+const mapStateToProps= state =>{
+  return{
+      dishes:state.Dishes.dishes,
+  }
+}
+
+const mapDispatchToProps=(dispatch)=>({
+  FetchAllDishes:()=>dispatch(FetchAllDishes())
+})
 class Main extends Component{
     constructor(props){
         super(props);
@@ -28,7 +42,10 @@ class Main extends Component{
 
         }
     }
-    
+   
+    componentDidMount(){
+      this.props.FetchAllDishes();
+    }
     
     // onDishSelect(dishId){
     //     this.setState({selectedDish:dishId});
@@ -78,4 +95,5 @@ class Main extends Component{
 }
 
 
-export default Main;
+export default  withRouter(connect(mapStateToProps,mapDispatchToProps)(Main));
+
