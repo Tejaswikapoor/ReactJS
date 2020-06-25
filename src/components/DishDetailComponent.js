@@ -30,8 +30,11 @@ import {Link } from 'react-router-dom';
                 showComment:true
             })
         }
+        componentDidMount(){
+            // this.props.FetchAllComments((this.props.dish._id))
+        }
           render(){
-        const comm=this.props.comment.map((data)=>{
+        const comm=this.props.dish.comments.map((data)=>{
             return(
             <Card >
            

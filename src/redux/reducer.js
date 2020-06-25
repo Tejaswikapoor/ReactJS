@@ -2,14 +2,19 @@
 import * as ActionType from './ActionType';
 
 export const initialState={
-dishes:[]
+dishes:[],
+comments:[],
+selectedDishId:"",
 }
 
 export const Dishes = (state = initialState, action) => {
     switch (action.type) {
         case ActionType.Fetch_Dishes:
             return {...state,dishes:action.payload}
-
+        case ActionType.Fetch_Comments:
+            return {...state,comments:action.payload}
+        case ActionType.Store_Selected_Dishid:
+            return {...state,selectedDishId:action.payload}
         default:
           return state;
       }
