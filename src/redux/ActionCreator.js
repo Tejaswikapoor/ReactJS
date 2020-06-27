@@ -36,3 +36,4 @@ export const storeDishId = (dishid) => ({
     type: ActionType.Store_Selected_Dishid,
     payload: dishid
 });
+

@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
 //import {Media} from 'reactstrap';
 import {Card,CardImg, CardImgOverlay,CardText,CardBody,CardTitle,BreadcrumbItem,Breadcrumb, CardHeader,Button,Modal,ModalBody,ModalHeader,Form,FormFeedback,Label,Col,Input,FormGroup} from 'reactstrap';
-import {Link } from 'react-router-dom';
-
+import {Link, withRouter } from 'react-router-dom';
+import swal from 'sweetalert';
       class DishDetail extends Component{
           constructor(props){
               super(props)
                   this.state={
                     showComment:false,
                     showReceipe:true,
+                    name:"",
+                    feedback:""
                   }
                   this.toggleModal=this.toggleModal.bind(this);
               this.toggleShowRecipe=this.toggleShowRecipe.bind(this);
               this.toggleShowComment=this.toggleShowComment.bind(this);
+              this.handleInputChange=this.handleInputChange.bind(this);
+              this.addComment=this.addComment.bind(this);
           }
           toggleModal() {
             this.setState({
@@ -30,6 +34,44 @@ import {Link } from 'react-router-dom';
                 showComment:true
             })
         }
+        handleInputChange(event){
+            this.setState({
+                [event.target.name]:event.target.value
+            })
+        }
+        addComment(){
+            const myjson={
+            "rating":4,
+            "comment":this.state.feedback,
+            "author":this.state.name
+
+            }
+            console.log(myjson)
+            const url = "http://localhost:3000/dishes/"+this.props.match.params.id+"/comments";
+            return fetch(url, {
+                method: 'POST',
+                headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json'
+                    },
+                     body: JSON.stringify(myjson)
+            }).then((response) => {
+                response.json().then((jsonResponse) => {
+                    if(jsonResponse==='{}') {
+                        swal(jsonResponse);
+                        //  console.log(jsonResponse)
+                    }
+                    else {
+                        swal({
+                            title:  "COMMENT SAVED.THANK YOU FOR YOUR COMMENT!",
+                            icon: "success"
+                        });
+                        // alert(jsonResponse["context"]["entity"]["documentId"])
+                        
+                    }
+                })});
+        
+        }
         componentDidMount(){
             // this.props.FetchAllComments((this.props.dish._id))
         }
@@ -45,7 +87,7 @@ import {Link } from 'react-router-dom';
                               <CardText>
                                      {data.comment}
                              </CardText>
-                              <CardText>{data.date}</CardText>
+                              <CardText>{data.updatedAt}</CardText>
                          </div>
                          <div className="col-2 display-4 mt-2">
                              <span className="fa fa-user-circle">
@@ -127,10 +169,10 @@ return(
                             <FormGroup row>
                                 <Label htmlFor="firstname" md={2}>Name</Label>
                                 <Col md={10}>
-                                    <Input type="text" id="firstname" name="firstname"
+                                    <Input type="text" id="firstname" name="name"
                                         placeholder=" Name"
-                                        // value={this.state.firstname}
-                                        // onChange={this.handleInputChange}
+                                         value={this.state.name}
+                                         onChange={this.handleInputChange}
                                         // onBlur={this.handleblur('firstname')} 
                                         // valid={errorss.firstname ===''}
                                         // invalid={errorss.firstname!==''}
@@ -143,20 +185,20 @@ return(
                             <FormGroup row>
                                 <Label htmlFor="message" md={2}>Give your Feedback </Label>
                                 <Col md={10}>
-                                    <Input type="textarea" id="message" name="message"
+                                    <Input type="textarea" id="message" name="feedback"
                                         rows="12"
-                                     //   value={this.state.message}
-                                       // onChange={this.handleInputChange}
+                                       value={this.state.feedback}
+                                        onChange={this.handleInputChange}
                                         />
                                     
                                 </Col>
                             </FormGroup> 
                             <FormGroup row>
                                 <Col md={{size:4,offset:2}}>
-                                    <Button className="btn btn-block" type="submit" color="primary">Send</Button>
+                                    <Button className="btn btn-block" onClick={this.addComment} color="primary">Send</Button>
                                 </Col>
                                 <Col md={{size:4,offset:2}}>
-                                    <Button className="btn btn-block" type="submit" color="primary" onClick={this.toggleModal}>Close</Button>
+                                    <Button className="btn btn-block"  color="primary" onClick={this.toggleModal}>Close</Button>
                                 </Col>
                             </FormGroup>
 
@@ -172,4 +214,4 @@ return(
 
     }
 
-export default DishDetail;
+export default withRouter(DishDetail);
