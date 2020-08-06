@@ -23,7 +23,8 @@ const mapStateToProps= state =>{
   return{
       dishes:state.Dishes.dishes,
       comments:state.Dishes.comments,
-      selectedDishId:state.Dishes.selectedDishId
+      selectedDishId:state.Dishes.selectedDishId,
+      isloading:state.Dishes.isloading
   }
 }
 
@@ -50,16 +51,16 @@ class Main extends Component{
     }
    
     componentDidMount(){
-      this.props.FetchAllDishes();
-     
+       this.props.FetchAllDishes(); 
+      
     }
     
-    // onDishSelect(dishId){
+    // onDishSelect(dishId){ 
     //     this.setState({selectedDish:dishId});
     // }
 
     render(){
-      const HomePage=()=>{
+      const HomePage=()=>{ 
         return(
           <Home dish={this.state.dishes.filter((dish)=> dish.featured)[0]}
           promo={this.state.promo.filter((prom)=> prom.featured)[0]}
@@ -73,8 +74,10 @@ class Main extends Component{
         return (
           
          <DishDetail dish={ this.props.dishes.filter((dish)=> parseInt(dish._id)=== parseInt(match.params.id))[0]}
-        comment={this.state.comments.filter((comment)=> comment.dishId===parseInt(match.params.id,10))}
+        // comment={this.state.comments.filter((comment)=> comment.dishId===parseInt(match.params.id,10))}
         FetchAllComments= {this.props.FetchAllComments}
+        FetchAllDishes={this.props.FetchAllDishes}
+        isloading={this.props.isloading}
         />
         )
     

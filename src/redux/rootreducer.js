@@ -4,17 +4,16 @@ import {persistReducer} from "redux-persist";
 import {combineReducers} from "redux";
  // import sessionStorage from "redux-persist/types/storage/session";
 
-// const persistConfig={
-//     key:'root'
-//     ,
-//     storage:sessionStorage,
-//     whiteList:['Dishes']
+const persistConfig={
+    key:'root',
+    storage:sessionStorage,
+    whiteList:['Dishes']
 
-// }
+}
 
 const rootreducer= combineReducers({
     Dishes:Dishes
 })
-export default rootreducer;
+// export default rootreducer;
 
-// export default  persistReducer(persistConfig,rootreducer);
+ export default persistReducer(persistConfig,rootreducer);

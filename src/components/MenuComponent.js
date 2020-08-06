@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 function RenderMenuItem({dish,onClick,storeDishId}){
     // storeDishId(parseInt(dish._id));
     return(
-    <Card  className="mb-4" >
+    <Card  className="mb-4 " >
         <Link to={`/menu/${dish._id}`}>
-        <CardImg className="alignfoodCard" witdh="100%" src={dish.image} alt={dish.name}/>
+        <CardImg className="alignfoodCard "   src={dish.image} alt={dish.name}/>
 
         <CardImgOverlay >
                 <CardTitle heading > {dish.name}</CardTitle>         
@@ -17,11 +17,13 @@ function RenderMenuItem({dish,onClick,storeDishId}){
     )
     
 }
+
    const Menu=(props)=>{
     const menu=props.adishes.map((dish)=>{
         return(
-            <div key={dish.id} className="col-12 col-md-6 mt-2">
-               <RenderMenuItem dish={dish} storeDishId={props.storeDishId} />
+            <div key={dish.id} >
+                <img src={dish.image} className="myflexslider"/>
+               {/* <RenderMenuItem dish={dish} storeDishId={props.storeDishId} /> */}
             </div>
         );
     });
@@ -29,24 +31,33 @@ function RenderMenuItem({dish,onClick,storeDishId}){
         
         <div className="container">
             <div className="row mt-2" >
-                <Breadcrumb>
+                <Breadcrumb >
                     <BreadcrumbItem> <Link to='/home'>Home</Link></BreadcrumbItem>
                     <BreadcrumbItem active>Menu</BreadcrumbItem>
                 </Breadcrumb>
+                <br/>
                 <div className="col-12">
                     <h3>
-                        Menu
+                        Starters 
                     </h3>
                     <hr className="rounded"/>
                 </div>
             </div>
             <div className="row">
-                <CardDeck>
-                {menu}
-                </CardDeck>
-               
-                  
+                {/* <CardDeck className="col-12 myflexslider"> */}
+              <div className="myflexsliderbox">
+                   {props.adishes.map((dish)=>(
+                    <img src={dish.image} className="myflexslider"/>
+                   )
+                   )}
+                   </div>
+                    {/* {menu} */}
+                {/* </CardDeck> */}
+   
              </div>
+
+
+           
              
                 
         </div>

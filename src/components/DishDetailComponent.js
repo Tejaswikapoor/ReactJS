@@ -10,18 +10,24 @@ import swal from 'sweetalert';
                     showComment:false,
                     showReceipe:true,
                     name:"",
-                    feedback:""
+                    feedback:"",
+                    commentadded:false,
+                    dish:this.props.dish,
+                    loaded:true,
                   }
                   this.toggleModal=this.toggleModal.bind(this);
               this.toggleShowRecipe=this.toggleShowRecipe.bind(this);
               this.toggleShowComment=this.toggleShowComment.bind(this);
               this.handleInputChange=this.handleInputChange.bind(this);
               this.addComment=this.addComment.bind(this);
+        
           }
           toggleModal() {
             this.setState({
                 isModalOpen:!this.state.isModalOpen,
-            })}
+            })
+            
+        }
           toggleShowRecipe(){
               this.setState({
                   showReceipe:true,
@@ -39,7 +45,9 @@ import swal from 'sweetalert';
                 [event.target.name]:event.target.value
             })
         }
-        addComment(){
+        
+        
+        addComment() {
             const myjson={
             "rating":4,
             "comment":this.state.feedback,
@@ -63,9 +71,19 @@ import swal from 'sweetalert';
                     }
                     else {
                         swal({
-                            title:  "COMMENT SAVED.THANK YOU FOR YOUR COMMENT!",
+                            title:  "COMMENT SAVED!",
                             icon: "success"
                         });
+                        // this.props.FetchAllDishes()
+                        this.toggleModal();
+                        window.location.reload();
+                        // if(this.state.loaded){
+                        //  this.props.FetchAllDishes()
+                        this.setState({
+                            commentadded:!this.state.commentadded
+                        })
+                        
+                        // }
                         // alert(jsonResponse["context"]["entity"]["documentId"])
                         
                     }
@@ -73,6 +91,8 @@ import swal from 'sweetalert';
         
         }
         componentDidMount(){
+            
+            //    this.props.FetchAllComments( parseInt(this.props.match.params.id));
             // this.props.FetchAllComments((this.props.dish._id))
         }
           render(){
@@ -120,13 +140,13 @@ return(
             <div className="row">
                 <div className=" col-md-3 m-1 ">
                   <Card >
-                          <CardImg width="100%" top src={this.props.dish.image}  />
-                      <CardBody>
+                    <CardImg width="100%" top src={this.props.dish.image}  />
+                    <CardBody>
                         <CardTitle>{this.props.dish.name}</CardTitle>
-                      <CardText>{this.props.dish.description}</CardText>
+                    <CardText>{this.props.dish.description}</CardText>
                      </CardBody>
-                         <Button className="btn btn-block bg-info" onClick={this.toggleShowRecipe}>Show Reciepe </Button>
-                         <Button className="btn btn-block bg-info" onClick={this.toggleShowComment}>Show comment</Button>
+                        <Button className="btn btn-block bg-info" onClick={this.toggleShowRecipe}>Show Reciepe </Button>
+                        <Button className="btn btn-block bg-info" onClick={this.toggleShowComment}>Show comment</Button>
                   </Card>
             </div>
        {this.state.showComment &&

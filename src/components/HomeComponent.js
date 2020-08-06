@@ -55,7 +55,7 @@ return(
             <CardDeck>
                
             <div className="col-12 col-md m-1 ">
-            <Link to="/menu/0" >
+            <Link to="/menu/" >
                 <RenderCard  items={props.dish}/>
                 </Link>
             </div>
